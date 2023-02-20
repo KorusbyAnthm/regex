@@ -1,6 +1,6 @@
 import * as emailValidator from "email-validator";
 import phone from "phone";
-import * as countryData from "country-data";
+import * as countries from "country-data/data/countries.json";
 import { PasswordMeter } from "password-meter";
 import data from "./data";
 
@@ -27,7 +27,7 @@ const passwordTest = (password: string) => {
 
 const generateCountryRegex = () => {
     let regex = "";
-    for (let country of countryData.countries.all) regex += `(${country.alpha2})|${country?.alpha3 ? `(${country.alpha3})|` : ""}`;
+    for (let country of countries) regex += `(${country.alpha2})|${country?.alpha3 ? `(${country.alpha3})|` : ""}`;
     return new RegExp("^(" + regex.slice(0, -1) + ")", "gi");
 };
 

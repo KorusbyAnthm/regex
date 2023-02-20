@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.data = void 0;
 var emailValidator = require("email-validator");
 var phone_1 = require("phone");
-var countryData = require("country-data");
+var countries = require("country-data/data/countries.json");
 var password_meter_1 = require("password-meter");
 var data_1 = require("./data");
 exports.data = data_1.default;
@@ -27,8 +27,8 @@ var passwordTest = function (password) {
 };
 var generateCountryRegex = function () {
     var regex = "";
-    for (var _i = 0, _a = countryData.countries.all; _i < _a.length; _i++) {
-        var country = _a[_i];
+    for (var _i = 0, countries_1 = countries; _i < countries_1.length; _i++) {
+        var country = countries_1[_i];
         regex += "(".concat(country.alpha2, ")|").concat((country === null || country === void 0 ? void 0 : country.alpha3) ? "(".concat(country.alpha3, ")|") : "");
     }
     return new RegExp("^(" + regex.slice(0, -1) + ")", "gi");
